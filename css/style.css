@@ -1,0 +1,109 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    vertical-align: middle;
+    line-height: 80px;
+    font-family: "Montserrat";
+    font-weight: bold;
+    font-size: 35px;
+	height: 80px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: white ;
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    position: fixed;
+    left: 0;
+    color: #2E5266;
+}
+
+.about {
+    font-size: 20px;
+    margin-right: 15px;
+    float: right;
+    cursor: pointer;
+}
+
+.sidenav {
+
+    margin-top: 80px;
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 200px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    padding: 10px;
+    left: 0;
+    background-color: #294859;
+    /*background-color: #ffffff; /* White */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    color: #c7cacc;
+}
+
+.sidenav div {
+    vertical-align: middle;
+    line-height: 50px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-family: "arial";
+    font-size: 16px;
+    padding: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sidenav div:hover {
+    background-color: #233f4f;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.main {
+	background-color: #eeeeee;
+    margin-left: 200px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
+
+.frameText {
+    font-family: 'Open Sans';
+    font-size: 20px;
+    margin-left: 15px;
+    padding-left: 15px;
+    margin-right: 20px;
+}
+.frameText div {
+    border-radius: 5px;
+    background-color: white;
+    margin: 15px;
+    padding: 15px;
+}
+.frameText span {
+    font-weight: bold;
+    color: #EEBA0B;
+}
+
+.frameText h2 {
+    font-family: "Montserrat";
+    margin-bottom: 0px;
+}
+
+.frame {
+	height: 200px;
+	width: 200px;
+	border: none;
+}
+
+.frame2{
+	border: none;
+	width:100%;
+    height:580px;
+    margin:10px;
+    margin-top:80px;
+    float:left;
+    position: relative;
+}

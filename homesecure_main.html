@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HomeSecure</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="assets/fontawesome-all.js"></script>
+	<script src="js/homesecure.js"></script>
+    <script type="text/javascript">
+      
+    </script>
+
+
+</head>
+<body style="background-color: #eeeeee", onload="select(1)">
+	<div class="header">
+        <img class="img-fluid mb-5 d-block mx-auto" src="img/logo.png" height=50px width=50px alt="">
+	HOMESECURE <span class="about" onclick="about()"><i class="fas fa-question-circle"></i></span>
+	</div>
+
+
+
+	<div class="main">
+
+		<div class="sidenav" id="sidenav">
+			<!--<ul>
+				<li>Hur</li>
+			</ul>!-->
+		<div id="op1" onclick="load(1)"><i class="fas fa-info-circle", class="fontawesome1", style="font-size: 25px"></i>  Sensor Info</div>
+		<div id="op2" onclick="load(2)"><i class="fas fa-video"></i>  Live Cam</div>
+		<div id="op3" onclick="load(3)"><i class="fas fa-file-video"></i>  Recordings</div>
+		<div id="op4" onclick="load(4)"><i class="fas fa-lightbulb"></i>  Lights</div>
+		<div id="op5" onclick="load(5)"><i class="fas fa-lock"></i>  Locks</div>
+		<div id="op6" onclick="load(6)"><i class="fas fa-cog"></i>  Settings</div>
+	</div>
+
+		<iframe name="stage" id="stage" class="frame2" src="sensor_info.html"></iframe>
+
+	</div>
+
+
+
+
+</body>
+</html>
