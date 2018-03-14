@@ -3,10 +3,21 @@
 <head>
 	<title></title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link id="css" rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="assets/fontawesome-all.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="js/homesecure.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+
+
+		window.addEventListener('message', function(event) { 
+		$("#css").attr("href", event.data);
+			}); 
+		
+
+		});
+		</script>
 </head>
 <body>
 
@@ -14,7 +25,7 @@
 
 	
 
-	<h2><i class="fas fa-lightbulb", style="font-size: 50px; color: #2E5266"></i> Lights</h2><br>
+	<h2><i class="fas fa-lightbulb", style="font-size: 50px;"></i> Lights</h2><br>
 
 	<div>
 

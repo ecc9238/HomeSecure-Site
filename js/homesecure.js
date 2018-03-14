@@ -1,21 +1,22 @@
 //Theme
-var primaryColor;
-var secondaryColor;
-var backgroundColor;
-var accentColor;
+var primaryColor = "#294859";
+var secondaryColor = "#ffffff";
+var backgroundColor = "#eeeeee";
+var accentColor1 = "#F0E100";
+var accentColor2 = "#EEBA0B";
 
+var themeSrc = "css/style.css";
 
 //JQuery 
 $(document).ready(function(){
 
-	//var url = "https://bzyiabry.p19.rt3.io/api/states";
-	var url = "http://172.19.20.41:8123/api/states"
+	var url = "https://oscaptdy.p19.rt3.io/api/states"
+	//var url = "http://172.19.20.41:8123/api/states"
 
 	var temp;
 	var tempName;
 	var humidity;
 	var humidityName;
-
 
 
 	window.setInterval(function() {
@@ -24,7 +25,7 @@ $(document).ready(function(){
 
         	for(var i = 0; i <  data.length; i++) {
 
-             if(data[i].attributes.friendly_name == 'Z-Uno Humidty')
+             if(data[i].attributes.friendly_name == 'Z-Uno Humidity')
              {
                humidityName = data[i].attributes.friendly_name;
                humidity = data[i].state;
@@ -35,15 +36,16 @@ $(document).ready(function(){
                tempName = data[i].attributes.friendly_name;
                temp = data[i].state;
              }
-            
 
          	}
-
 
         });
 
         $("#temperature").text(temp);
         $("#humidity").text(humidity);
+
+
+
 
 
 
@@ -53,18 +55,39 @@ $(document).ready(function(){
 
 
 
+function getStates(){
+        $.get(url, function(data, status){
 
+        	for(var i = 0; i <  data.length; i++) {
 
+             if(data[i].attributes.friendly_name == 'Z-Uno Humidity')
+             {
+               humidityName = data[i].attributes.friendly_name;
+               humidity = data[i].state;
+             }
+              if(data[i].attributes.friendly_name == 'Z-Uno Temp')
+             {
+
+               tempName = data[i].attributes.friendly_name;
+               temp = data[i].state;
+             }
+
+         	}
+
+        });
+
+        $("#temperature").text(temp + "F");
+        $("#humidity").text(humidity + "%");
+
+}
 
 });
 
 
-function setStates(){
-
-}
-
 function load(v){
 	var child = document.getElementById("stage");
+
+
 
 	switch(v) {
 		case 1:
@@ -77,22 +100,46 @@ function load(v){
 			break;
 		case 3:
 			select(3);
-			child.src="recordings.html"
+			child.src="recordings.html";
 			break;
 		case 4:
 			select(4);
-			child.src="lights.html"
+			child.src="lights.html";
 			break;
 		case 5:
 			select(5);
-			child.src="locks.html"
+			child.src="locks.html";
 			break;
 		case 6:
 			select(6);
-			child.src="settings.html"
+			child.src="settings.html";
 			break;
 	}
+
+
+}
+
+function setTheme(theme) {
+
 	
+
+	switch(theme) {
+		case "default":
+			themeSrc = "css/style.css";
+			window.parent.postMessage("css/style.css", '*');
+			break;
+		case "night":
+			themeSrc = "css/night.css";
+			window.parent.postMessage("css/night.css", '*'); 
+			break;
+		case "leafgreen":
+			themeSrc = "css/leafgreen.css";
+			window.parent.postMessage("css/leafgreen.css", '*'); 
+			break;
+
+	}
+
+
 
 }
 
@@ -107,12 +154,43 @@ function select(op){
 
 	opString = "op" + op;
 
-	document.getElementById(opString).style.background = "linear-gradient(to right, #F0E100, #EEBA0B)";
+	//var cssArray = document.getElementById("css").href.split('/');
+	//var cssFile = cssArray[cssArray.length - 1];
+
+	if (themeSrc == "css/night.css") {
+		accentColor1 = "#9A348E";
+		accentColor2 = "#DA627D"
+		primaryColor = "white";
+		document.getElementById("icon").src="img/icon_white.png";
+	}
+	
+	else if (themeSrc == "css/style.css") {
+		primaryColor = "#294859";
+		accentColor1 = "#F0E100";
+		accentColor2 = "#EEBA0B";
+		document.getElementById("icon").src="img/icon_blue.png";
+	}
+	else if (themeSrc == "css/leafgreen.css") {
+		primaryColor = "white";
+		//accentColor1 = "#3C896D";
+		accentColor1 = "#4FB286";
+		accentColor2 = "#50FFB1";
+		document.getElementById("icon").src="img/icon_white.png";
+	
+
+	}
+
+	document.getElementById(opString).style.background = "linear-gradient(to right," + accentColor1 + "," + accentColor2 + ")";
 	//document.getElementById(opString).style.color= "#4C212A";
-	document.getElementById(opString).style.color= "#294859";	
+	document.getElementById(opString).style.color= primaryColor;	
 }
 
 function about(){
+	var modal = document.getElementById("modal");
+	modal.style.display = "block";
+}
 
-	alert("CSC 4990 Spring 2018\nClae Carlson, Bryce Renninger, Edward C Champion");
+function closeModal(){
+	var modal = document.getElementById("modal");
+	modal.style.display = "none";
 }

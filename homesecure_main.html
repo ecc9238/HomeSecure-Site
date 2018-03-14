@@ -3,25 +3,66 @@
 <head>
 	<title>HomeSecure</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link id="css" rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="assets/fontawesome-all.js"></script>
 	<script src="js/homesecure.js"></script>
-    <script type="text/javascript">
-      
+    <script>
+    	// set Theme
+
+
+    	$(document).ready(function(){
+
+    	
+
+    	$("#stage").on('load', function () {   
+
+    		setTimeout(function(){
+
+			var frame = document.getElementById("stage"); 
+			frame.contentWindow.postMessage(themeSrc, '*'); 
+
+    		}, 50);
+    		
+    	});
+
+    	window.addEventListener('message', function(event) { 
+    		$("#css").attr("href", event.data);
+    		themeSrc = event.data;
+    		var frame = document.getElementById("stage"); 
+			frame.contentWindow.postMessage(themeSrc, '*'); 
+			select(6);
+    		//alert(event.data);
+    	});
+
+      });
     </script>
 
 
 </head>
-<body style="background-color: #eeeeee", onload="select(1)">
+<body onload="select(1)" class="main">
 	<div class="header">
-        <img class="img-fluid mb-5 d-block mx-auto" src="img/logo.png" height=50px width=50px alt="">
+        <img id="icon" class ="icon" src="img/icon_blue.png" height=50px width=80px alt="">
 	HOMESECURE <span class="about" onclick="about()"><i class="fas fa-question-circle"></i></span>
 	</div>
 
+	<div class="modal" id="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+    		<span class="close" onclick="closeModal()">&times;</span>
+    		<h2>HomeSecure: Open-Source Home Security</h2>
+  			</div>
+  			<div class="modal-body">
+  				<p><strong>CSC 4990 Spring 2018</strong></p>
+  				<p>A home security project using the Home Assistant RESTful API, Hassio Motion, hosted on a Raspberry Pi</p>
+  				<p style="font-size: 12px">Clae Carlson, Bryce Renninger, Edward C Champion</p>
+  			</div>
+			
+		</div>
+	</div>
 
 
-	<div class="main">
+	<div>
 
 		<div class="sidenav" id="sidenav">
 			<!--<ul>
@@ -33,9 +74,12 @@
 		<div id="op4" onclick="load(4)"><i class="fas fa-lightbulb"></i>  Lights</div>
 		<div id="op5" onclick="load(5)"><i class="fas fa-lock"></i>  Locks</div>
 		<div id="op6" onclick="load(6)"><i class="fas fa-cog"></i>  Settings</div>
+
 	</div>
 
-		<iframe name="stage" id="stage" class="frame2" src="sensor_info.html"></iframe>
+		<iframe name="stage" id="stage" class="frame2" src="sensor_info.html">
+			
+		</iframe>
 
 	</div>
 
