@@ -10,12 +10,20 @@
     <script>
     	// set Theme
 
+    	// camUrl = "";
 
     	$(document).ready(function(){
 
-    	
+    	$("#stage").on('load', function () { 
 
-    	$("#stage").on('load', function () {   
+    		if (firstLoad){
+    			select(1);
+    			firstLoad = 0;
+    		}
+
+    		$("#topoverlay").hide();
+    		$("#overlay").hide('slow');
+    		$("#overlayContent").hide('slow');  
 
     		setTimeout(function(){
 
@@ -27,13 +35,35 @@
     	});
 
     	window.addEventListener('message', function(event) { 
-    		$("#css").attr("href", event.data);
-    		themeSrc = event.data;
-    		var frame = document.getElementById("stage"); 
-			frame.contentWindow.postMessage(themeSrc, '*'); 
-			select(6);
-    		//alert(event.data);
+    		if (event.data == "livecam"){
+				//$("#imgBig").attr("src",$(this).prop('src'));
+
+				$("#overlayFrame").attr('src', camUrl);
+				$("#overlayFrame").attr('src', $("#overlayFrame").attr('src'));
+    			$("#overlay").show('slow');
+    			$("#overlayContent").show('slow');
+    			$("#topoverlay").show();
+
+    		}
+    		else {
+    			$("#css").attr("href", event.data);
+    			themeSrc = event.data;
+    			var frame = document.getElementById("stage"); 
+				frame.contentWindow.postMessage(themeSrc, '*'); 
+				select(6);
+    			//alert(event.data);
+    		}
     	});
+
+    	$("#topoverlay").click(function(){
+    		//alert("top clicked");
+    		$("#topoverlay").hide();
+    		$("#overlay").hide();
+    		$("#overlayContent").hide();  
+    	});
+
+
+
 
       });
     </script>
@@ -41,6 +71,20 @@
 
 </head>
 <body onload="select(1)" class="main">
+
+	<div id="topoverlay"></div>
+	<div id="overlay"></div>
+	<div id="overlayContent">
+		<div class="wrap">
+    	<iframe class="overlayFrame" id="overlayFrame" src="" style="border: none"></iframe>
+    	</div>
+
+	</div>
+
+
+
+
+
 	<div class="header">
         <img id="icon" class ="icon" src="img/icon_blue.png" height=50px width=80px alt="">
 	HOMESECURE <span class="about" onclick="about()"><i class="fas fa-question-circle"></i></span>

@@ -7,19 +7,46 @@
 		<script src="assets/fontawesome-all.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="js/homesecure.js"></script>
+			<style type="text/css">
+
+
+
+
+	</style>
 		<script type="text/javascript">
+
+		//var camUrl = "http://172.19.20.41:8081/"
+		var large = 0;
+
 		$(document).ready(function(){
 
 
 		window.addEventListener('message', function(event) { 
 		$("#css").attr("href", event.data);
 			}); 
+
+
+
+		$("#grid").click(function(){
+			window.parent.postMessage("livecam", "*");
+
+		});
 		
 
 		});
+
+		function setFrame(){
+			//var camUrl = "https://ykszmmat.p19.rt3.io/";
+
+			$(document).ready(function(){
+				$("#camframe").attr('src', camUrl);
+
+			$("#camframe").attr('src', $("#camframe").attr('src'));
+		});
+		}
 		</script>
 </head>
-<body>
+<body onload="setFrame()">
 
 	<div class="frameText">
 
@@ -28,21 +55,9 @@
 	<h2><i class="fas fa-video", style="font-size: 50px;"></i> Live Camera</h2><br>
 
 	<div>
+	<div id="grid"></div>
 
-	<iframe src="http://172.19.20.41:8081/" height="480px" width="640px"></iframe>
-
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
-	<div></div>
+	<iframe class="camframe" id="camframe" src="" style="border: none"></iframe>
 
 	</div>
 
