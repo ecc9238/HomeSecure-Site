@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HomeSecure</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans" rel="stylesheet">
+	<link id="css" rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="assets/fontawesome-all.js"></script>
+	<script src="js/homesecure.js"></script>
+    <script>
+    	// set Theme
+
+    	// camUrl = "";
+
+    	$(document).ready(function(){
+
+    	$("#stage").on('load', function () { 
+
+    		if (firstLoad){
+    			select(1);
+    			firstLoad = 0;
+    		}
+
+    		$("#topoverlay").hide();
+    		$("#overlay").hide('slow');
+    		$("#overlayContent").hide('slow');  
+
+    		setTimeout(function(){
+
+			var frame = document.getElementById("stage"); 
+			frame.contentWindow.postMessage(themeSrc, '*'); 
+
+    		}, 50);
+    		
+    	});
+
+    	window.addEventListener('message', function(event) { 
+    		if (event.data == "livecam"){
+				//$("#imgBig").attr("src",$(this).prop('src'));
+
+				$("#overlayFrame").attr('src', camUrl);
+				$("#overlayFrame").attr('src', $("#overlayFrame").attr('src'));
+    			$("#overlay").show('slow');
+    			$("#overlayContent").show('slow');
+    			$("#topoverlay").show();
+
+    		}
+    		else {
+    			$("#css").attr("href", event.data);
+    			themeSrc = event.data;
+    			var frame = document.getElementById("stage"); 
+				frame.contentWindow.postMessage(themeSrc, '*'); 
+				select(6);
+    			//alert(event.data);
+    		}
+    	});
+
+    	$("#topoverlay").click(function(){
+    		//alert("top clicked");
+    		$("#topoverlay").hide();
+    		$("#overlay").hide();
+    		$("#overlayContent").hide();  
+    	});
+
+
+
+
+      });
+    </script>
+
+
+</head>
+<body onload="select(1)" class="main">
+
+	<div id="topoverlay"></div>
+	<div id="overlay"></div>
+	<div id="overlayContent">
+		<div class="wrap">
+    	<iframe class="overlayFrame" id="overlayFrame" src="" style="border: none"></iframe>
+    	</div>
+
+	</div>
+
+
+
+
+
+	<div class="header">
+        <img id="icon" class ="icon" src="img/icon_blue.png" height=50px width=80px alt="">
+	HOMESECURE <span class="about" onclick="about()"><i class="fas fa-question-circle"></i></span>
+	</div>
+
+	<div class="modal" id="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+    		<span class="close" onclick="closeModal()">&times;</span>
+    		<h2>HomeSecure: Open-Source Home Security</h2>
+  			</div>
+  			<div class="modal-body">
+  				<p><strong>CSC 4990 Spring 2018</strong></p>
+  				<p>A home security project using the Home Assistant RESTful API, Hassio Motion, hosted on a Raspberry Pi</p>
+  				<p style="font-size: 12px">Clae Carlson, Bryce Renninger, Edward C Champion</p>
+  			</div>
+			
+		</div>
+	</div>
+
+
+	<div>
+
+		<div class="sidenav" id="sidenav">
+			<!--<ul>
+				<li>Hur</li>
+			</ul>!-->
+		<div id="op1" onclick="load(1)"><i class="fas fa-info-circle", class="fontawesome1"></i>  Sensor Info</div>
+		<div id="op2" onclick="load(2)"><i class="fas fa-video"></i>  Live Cam</div>
+		<div id="op3" onclick="load(3)"><i class="fas fa-file-video"></i>  Recordings</div>
+		<div id="op4" onclick="load(4)"><i class="fas fa-lightbulb"></i>  Lights</div>
+		<div id="op5" onclick="load(5)"><i class="fas fa-lock"></i>  Locks</div>
+		<div id="op6" onclick="load(6)"><i class="fas fa-cog"></i>  Settings</div>
+
+	</div>
+
+		<iframe name="stage" id="stage" class="frame2" src="sensor_info.html">
+			
+		</iframe>
+
+	</div>
+
+
+
+
+</body>
+</html>
