@@ -14,6 +14,15 @@
 		window.addEventListener('message', function(event) { 
 		$("#css").attr("href", event.data);
 			}); 
+
+		$(".outlet").click(function(){
+        	$.post("http://172.19.20.41:8123/api/services/switch/toggle", JSON.stringify({
+            "entity_id":"switch.switch_3"
+       }),
+          function(data, status){
+            alert("data: " + data + "\nStatus " + status)
+          });
+      });
 		
 
 		});
@@ -29,7 +38,7 @@
 
 	<div>
 
-	<div></div>
+	<div class="outlet">Outlet Switch<span id="outlet_state">State: </span></div>
 	<div></div>
 	<div></div>
 	<div></div>

@@ -119,6 +119,151 @@ body{
     position: relative;
 }
 
+/* Live Cam Frame */
+.camframe {
+    position: relative;
+    margin-left: 180px;
+    overflow: hidden;
+    height: 480px;
+    width: 640px;
+    margin-bottom: 0px;
+    -ms-transform: scale(0.85);
+    -moz-transform: scale(0.85);
+    -o-transform: scale(0.85);
+    -webkit-transform: scale(0.85);
+    transform: scale(0.85);
+
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+#grid {
+    z-index: 10;
+    opacity: 0;
+    /*background-color: green;*/
+    position: absolute;
+    width: 512px;
+    height: 384px;
+    margin-left: 180px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+#overlay{
+    position: fixed; 
+    width: 100%; 
+    height: 100%; 
+    top: 0px; 
+    left: 0px; 
+    background-color: #000; 
+    opacity: 0.8;
+    filter: alpha(opacity = 80) !important;
+    display: none;
+    z-index: 100;
+}
+#topoverlay{
+    cursor: pointer;
+    position: fixed; 
+    width: 100%; 
+    height: 100%; 
+    top: 0px; 
+    left: 0px; 
+    z-index: 300;
+    display: none;
+}
+
+.wrap
+{
+    width: 1280px;
+    height: 1024px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.overlayFrame
+{
+    width: 1280px;
+    height: 1024px;
+    border: 0;
+
+    margin-top: 0px;
+    margin-left: 80px;
+    margin-bottom: 150px;
+
+
+    -ms-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+#overlayContent{
+    position: fixed; 
+    width: 100%;
+    top: 50px;
+    text-align: center;
+    display: none;
+    overflow: hidden;
+    z-index: 100;
+}
+
+#contentGallery{
+    margin: 0px auto;
+}
+
+/* Recording */
+.recordingFrame {
+    border: none;
+    display: none;
+    height: 340px;
+    width: 520px;
+}
+
+.recordingContainer {
+    position: absolute;
+    display: none;
+    background-color: black !important;
+    width: 520px;
+    height: 370px; 
+    left: 400px;
+}
+
+.recordingDiv{
+    color: blue;
+    cursor: pointer;
+}
+.frameX {
+    font-size: 25px;
+    color: grey !important;
+    float: right;
+    cursor: pointer;
+}
+
+.frameX:hover,
+.frameX:focus {
+    color: white !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Lights */
+
+.outlet {
+    color: white;
+    background-color: blue !important;
+    padding: 5px;
+    cursor: pointer;
+}
+
 /* Theme Selection */
 .theme_select {
     cursor: pointer;

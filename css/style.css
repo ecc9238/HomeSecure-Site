@@ -220,6 +220,50 @@ body{
     margin: 0px auto;
 }
 
+/* Recording */
+.recordingFrame {
+    border: none;
+    display: none;
+    height: 340px;
+    width: 520px;
+}
+
+.recordingContainer {
+    position: absolute;
+    display: none;
+    background-color: black !important;
+    width: 520px;
+    height: 370px; 
+    left: 400px;
+}
+
+.recordingDiv{
+    color: blue;
+    cursor: pointer;
+}
+.frameX {
+    font-size: 25px;
+    color: grey !important;
+    float: right;
+    cursor: pointer;
+}
+
+.frameX:hover,
+.frameX:focus {
+    color: white !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Lights */
+
+.outlet {
+    color: white;
+    background-color: blue !important;
+    padding: 5px;
+    cursor: pointer;
+}
+
 /* Theme Selection */
 .theme_select {
     cursor: pointer;
@@ -250,7 +294,6 @@ body{
     text-align: center;
     display: block;
 }
-
 
 /* Modal */
 

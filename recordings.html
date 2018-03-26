@@ -10,10 +10,40 @@
 		<script type="text/javascript">
 		$(document).ready(function(){
 
+			/*
+
+			const fs = require('fs');
+			const dir = './img';
+
+			fs.readdir(dir, (err, files) => {
+  			console.log(files.length);
+			});
+			
+			*/
+
 
 		window.addEventListener('message', function(event) { 
 		$("#css").attr("href", event.data);
 			}); 
+
+		$("#rabbit").click(function(){
+			$("#recordingFrame").attr("src", "img/video.mp4");
+			$("#recordingFrame").attr("style", "display: inline")
+			$("#recordingContainer").attr("style", "display: inline")
+		});
+
+		$("#nightsky").click(function(){
+			$("#recordingFrame").attr("src", "img/nightsky.mp4");
+			$("#recordingFrame").attr("style", "display: inline")
+			$("#recordingContainer").attr("style", "display: inline")
+		});
+
+		$("#frameX").click(function(){
+			$("#recordingFrame").attr("src", "");
+			$("#recordingFrame").attr("style", "none")
+			$("#recordingContainer").attr("style", "none")
+
+		})
 		
 
 		});
@@ -21,15 +51,26 @@
 </head>
 <body>
 
+
 	<div class="frameText">
+
 
 	
 
 	<h2><i class="fas fa-file-video", style="font-size: 50px;"></i> Recordings</h2><br>
 
 	<div>
+		
+	
+	<div id="recordingContainer" class="recordingContainer">
+	<span id="frameX" class="frameX">&times;</span>
+	<iframe class="recordingFrame" id="recordingFrame" src=""></iframe>
+	</div>
 
-	<div></div>
+	<div class="recordingDiv" id="rabbit">test_video_3_19_2018_12_24_PM</div>
+
+	<!--<iframe src="img/" height="300p" width="500px"></iframe>!-->
+	<div class="recordingDiv" id="nightsky">night_sky_mp4</div>
 	<div></div>
 	<div></div>
 	<div></div>
