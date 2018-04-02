@@ -1,6 +1,6 @@
 <?php 
 /* Main page with two forms: sign up and log in */
-require 'php/header.php';
+require 'header.php';
 session_start();
 ?>
 
@@ -11,8 +11,8 @@ session_start();
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans" rel="stylesheet">
 	<link id="css" rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="assets/fontawesome-all.js"></script>
-	<script src="js/homesecure.js"></script>
+	<script src="/assets/fontawesome-all.js"></script>
+	<script src="/js/homesecure.js"></script>
     <script>
     	// set Theme
 
@@ -110,10 +110,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	<div class="header">
         <img id="icon" class ="icon" src="img/icon_blue.png" height=50px width=80px alt="">
 	HOMESECURE <span class="about" onclick="about()"><i class="fas fa-question-circle"></i></span>
-    <!-- Button to open the modal login form -->
-    <button onclick="document.getElementById('id01').style.display='block'">Login</button>
-    <!-- Button to open the modal -->
-    <button onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
+   
+    <?php 
+      if( !isset($_SESSION['logged_in']) )
+        {
+          echo "<!-- Button to open the modal login form -->
+            <button onclick= document.getElementById('id01').style.display='block'>Login</button>
+            <!-- Button to open the register modal -->
+            <button onclick= document.getElementById('id02').style.display='block' >Sign Up</button>";
+        }
+      else
+        { 
+          echo $_SESSION["username"];
+          echo '<a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>';
+        }
+      ?>
+
 	</div>
 
 	<div class="modal" id="modal">
@@ -135,19 +147,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     class="close" title="Close Modal">&times;</span>
 
       <!-- Modal Content -->
-      <form class="modal-content animate" action="/action_page.php">
+      <form class="modal-content animate" action="index.php" method="post" autocomplete="off">
         <div class="imgcontainer">
           <img src="img/icon_blue.png" height=100px width=150px alt="Avatar" class="icon">
         </div>
 
         <div class="container">
           <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+          <input type="text" placeholder="Enter Username" name="username" required>
 
           <label for="psw"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="psw" required>
-
-          <button type="submit">Login</button>
+          <button class="button button-block" name="login" />Log In</button>
+          <p class="forgot"><a href="forgot.php">Forgot Password?</a></p>
           <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
           </label>
@@ -160,33 +172,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     </div>
         <div id="id02" class="modal">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">times;</span>
-      <form class="modal-content" action="/action_page.php">
+      <form class="modal-content" action="index.php" method="post" autocomplete="off">
+        <div class="imgcontainer">
+          <img src="img/icon_blue.png" height=100px width=150px alt="Avatar" class="icon">
+        </div>
         <div class="container">
           <h1>Sign Up</h1>
           <p>Please fill in this form to create an account.</p>
           <hr>
-          <label for="email"><b>Email</b></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
+          <input type="text" placeholder="Enter Email" name='email' required />
 
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          <input type="text" placeholder="Enter Username" name='username' required />
 
-          <label for="psw-repeat"><b>Repeat Password</b></label>
-          <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+          <input type="password" placeholder="Enter Password" name="psw" required />
 
-          <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-          </label>
-
-          <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+          <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
 
           <div class="clearfix">
             <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-            <button type="submit" class="signup">Sign Up</button>
+             <button type="submit" class="button button-block" name="register" />Register</button>
           </div>
         </div>
       </form>
     </div>
+    <?php
+
+      if(isset($_SESSION['logged_in']))
+      {
+
+    ?>
+
 
 	<div>
 
@@ -210,6 +225,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	</div>
 
 </body>
+
+<?php
+  }
+?>
 <script>
 // Get the modal
 var modal = document.getElementById('id01');

@@ -6,12 +6,12 @@ var accentColor1 = "#F0E100";
 var accentColor2 = "#EEBA0B";
 
 var themeSrc = "css/style.css";
-//var camUrl = "http://172.19.20.41:8081/";
+var camUrl = "http://172.19.20.41:8081/";
 //var camUrl = "https://wztxmxwb.p19.rt3.io/"
-var camUrl = "http://192.168.0.123:8081"
+//var camUrl = "http://192.168.0.123:8081"
 
-var url = "http://192.168.0.123:8123/api/states"
-//var url = "http://172.19.20.41:8123/api/states"
+//var url = "http://192.168.0.123:8123/api/states"
+var url = "http://172.19.20.41:8123/api/states"
 //var url = "https://rzyygcpm.p19.rt3.io/api/states"
 var firstLoad = 1;
 var gotten = 0;
@@ -261,4 +261,23 @@ function about(){
 function closeModal(){
 	var modal = document.getElementById("modal");
 	modal.style.display = "none";
+}
+
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+// Get the modal
+var modal2 = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal2) {
+        modal2.style.display = "none";
+    }
 }
