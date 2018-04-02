@@ -8,7 +8,18 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="js/homesecure.js"></script>
 		<script type="text/javascript">
+
+
+
 		$(document).ready(function(){
+
+			// Dynamically get recordings
+			$.ajax({
+  					url: 'php/getRecordings.php',
+ 					success: function(data) {
+    				$("#recordingsList").html(data);
+  				}
+				});
 
 			/*
 
@@ -26,14 +37,15 @@
 		$("#css").attr("href", event.data);
 			}); 
 
+
 		$("#rabbit").click(function(){
-			$("#recordingFrame").attr("src", "img/video.mp4");
+			$("#recordingFrame").attr("src", "recordings/video.mp4");
 			$("#recordingFrame").attr("style", "display: inline")
 			$("#recordingContainer").attr("style", "display: inline")
 		});
 
 		$("#nightsky").click(function(){
-			$("#recordingFrame").attr("src", "img/nightsky.mp4");
+			$("#recordingFrame").attr("src", "recordings/nightsky.mp4");
 			$("#recordingFrame").attr("style", "display: inline")
 			$("#recordingContainer").attr("style", "display: inline")
 		});
@@ -43,10 +55,24 @@
 			$("#recordingFrame").attr("style", "none")
 			$("#recordingContainer").attr("style", "none")
 
-		})
+		});
 		
 
 		});
+
+		function loadVid(file){
+
+			var src = "recordings/" + file;
+
+			var recordingFrame = document.getElementById("recordingFrame");
+			var recordingContainer = document.getElementById("recordingContainer");
+
+			recordingFrame.src = src;
+			recordingFrame.style.display = "inline";
+			recordingContainer.style.display = "inline";
+
+			
+		}
 		</script>
 </head>
 <body>
@@ -64,13 +90,11 @@
 	
 	<div id="recordingContainer" class="recordingContainer">
 	<span id="frameX" class="frameX">&times;</span>
-	<iframe class="recordingFrame" id="recordingFrame" src=""></iframe>
+	<video id="recordingFrame" class="recordingFrame" src="" autoplay="autoplay" controls></video>
 	</div>
 
-	<div class="recordingDiv" id="rabbit">test_video_3_19_2018_12_24_PM</div>
 
-	<!--<iframe src="img/" height="300p" width="500px"></iframe>!-->
-	<div class="recordingDiv" id="nightsky">night_sky_mp4</div>
+	<span id="recordingsList">
 	<div></div>
 	<div></div>
 	<div></div>
@@ -78,6 +102,7 @@
 	<div></div>
 	<div></div>
 	<div></div>
+	</span>
 
 
 	</div>
