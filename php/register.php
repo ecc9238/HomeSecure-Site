@@ -48,7 +48,7 @@ else { // Email doesn't already exist in a database, proceed...
 
         Please click this link to activate your account:
 
-        http://localhost/verify.php?email='.$email.'&hash='.$hash;  
+        http://localhost/webserver1/Site/php/verify.php?email='.$email.'&hash='.$hash;  
 
         mail( $to, $subject, $message_body );
 

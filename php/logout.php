@@ -9,7 +9,12 @@ session_destroy();
 <head>
   <meta charset="UTF-8">
   <title>Error</title>
-  <?php include 'css/css.html'; ?>
+  <script type="text/javascript">
+  	setTimeout(function(){
+    window.location="../index.php"
+	}, 5000);
+  </script>
+  <?php include '../css/css.html'; ?>
 </head>
 
 <body>
@@ -17,8 +22,10 @@ session_destroy();
           <h1>Thanks for stopping by</h1>
               
           <p><?= 'You have been logged out!'; ?></p>
+          <br>
+          <p> You will be redirected to the main page in 5 seconds </p>
           
-          <a href="index.php"><button class="button button-block"/>Home</button></a>
+          <a href="../index.php"><button class="button button-block"/>Home</button></a>
 
     </div>
 </body>

@@ -6,7 +6,7 @@ session_start();
 <html>
 <head>
   <title>Success</title>
-  <?php include 'css/css.html'; ?>
+  <?php include '../css/css.html'; ?>
 </head>
 <body>
 <div class="form">
@@ -16,11 +16,11 @@ session_start();
     if( isset($_SESSION['message']) AND !empty($_SESSION['message']) ):
         echo $_SESSION['message'];    
     else:
-        header( "location: index.php" );
+        header( "location: ../index.php" );
     endif;
     ?>
     </p>
-    <a href="index.php"><button class="button button-block"/>Home</button></a>
+    <a href="../index.php"><button class="button button-block"/>Home</button></a>
 </div>
 </body>
 </html>

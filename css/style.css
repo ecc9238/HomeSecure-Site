@@ -1,9 +1,127 @@
+:root {
+    --main-color: #294859;
+    --header-bg: white;
+    --frametext-div: white;
+    --sidenav-bg: #294859;
+    --sidenav-color: #e0dbce;
+    --sidenav-hoverbg: #233f4f;
+    --sidenav-hovercolor: #fff;
+    --main-bg: #eeeeee;
+    --accent-color: #EEBA0B;
+    --bg-img: url(none);
+    --modal-header: #294859;
+}
+
+
+
 body{
     margin: 0;
     padding: 0;
 }
 
+/* Main Login */
+.closeSignup {
+    position: absolute;
+    z-index: 200;
+    margin-top: 10px;
+    margin-left: 920px;
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.closeSignup:hover,
+.closeSignup:focus {
+    opacity: 0.6;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.signup {
+    border-radius: 5px;
+    background-color: #4CAF50;
+    padding: 14px 20px;
+    font-size: 10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    font-family: 'Open Sans';
+}
+.signup:hover {
+    opacity: 0.8;
+}
+.mainLogin {
+    text-align: center;
+    border-radius: 5px;
+    margin: 30px;
+    margin-right: 200px;
+    margin-top: 150px;
+}
+
+/* Main and iFrame */
+
+.main {
+    background-image: var(--bg-img);
+    background-color: var(--main-bg);
+    margin-left: 200px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
+.frameText {
+    font-family: 'Open Sans';
+    font-size: 20px;
+    margin-left: 15px;
+    padding-left: 15px;
+    margin-right: 20px;
+    color: var(--main-color);
+}
+.frameText div {
+    border-radius: 5px;
+    background-color: var(--frametext-div);
+    margin: 15px;
+    padding: 15px;
+}
+.frameText span {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.frameText h2 {
+    font-family: "Montserrat";
+    margin-bottom: 0px;
+}
+
+.frameText h1 {
+    font-family: "Montserrat";
+    margin-bottom: 0px;
+}
+
+.frame {
+    height: 200px;
+    width: 200px;
+    border: none;
+}
+
+.frame2{
+    border: none;
+    width:100%;
+    height:580px;
+    margin:10px;
+    margin-top:80px;
+    float:left;
+    position: relative;
+}
+
 /* Header */
+
+.userheader {
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+}
 
 .header {
     vertical-align: middle;
@@ -11,16 +129,16 @@ body{
     font-family: "Montserrat";
     font-weight: bold;
     font-size: 35px;
-	height: 80px;
+    height: 80px;
     width: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: white ;
+    background-color: var(--header-bg);
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     position: fixed;
     left: 0;
-    color: #294859;
+    color: var(--main-color);
 }
 
 .icon {
@@ -46,11 +164,11 @@ body{
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
     padding: 10px;
     left: 10px;
-    background-color: #294859;
+    background-color: var(--sidenav-bg);
     /*background-color: #ffffff; /* White */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
-    color: #e0dbce;
+    color: var(--sidenav-color);
 }
 
 .sidenav div {
@@ -66,57 +184,9 @@ body{
 }
 
 .sidenav div:hover {
-    background-color: #233f4f;
-    color: #fff;
+    background-color: var(--sidenav-hoverbg);
+    color: var(--sidenav-hovercolor);
     cursor: pointer;
-}
-
-/* Main and iFrame */
-
-.main {
-	background-color: #eeeeee;
-    margin-left: 200px; /* Same as the width of the sidebar */
-    padding: 0px 10px;
-}
-
-.frameText {
-    font-family: 'Open Sans';
-    font-size: 20px;
-    margin-left: 15px;
-    padding-left: 15px;
-    margin-right: 20px;
-    color: #294859;
-}
-.frameText div {
-    border-radius: 5px;
-    background-color: white;
-    margin: 15px;
-    padding: 15px;
-}
-.frameText span {
-    font-weight: bold;
-    color: #EEBA0B;
-}
-
-.frameText h2 {
-    font-family: "Montserrat";
-    margin-bottom: 0px;
-}
-
-.frame {
-	height: 200px;
-	width: 200px;
-	border: none;
-}
-
-.frame2{
-	border: none;
-	width:100%;
-    height:580px;
-    margin:10px;
-    margin-top:80px;
-    float:left;
-    position: relative;
 }
 
 /* Live Cam Frame */
@@ -238,7 +308,6 @@ body{
 }
 
 .recordingDiv{
-    color: blue;
     cursor: pointer;
 }
 .frameX {
@@ -262,6 +331,33 @@ body{
     background-color: blue !important;
     padding: 5px;
     cursor: pointer;
+}
+
+/* Arm/Disarm */
+.status {
+    padding: 50px;
+}
+
+.loadingStatus:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsisStatus steps(4,end) 900ms infinite;      
+  animation: ellipsisStatus steps(4,end) 900ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsisStatus {
+  to {
+    width: 40px;    
+  }
+}
+
+@-webkit-keyframes ellipsisStatus {
+  to {
+    width: 40px;    
+  }
 }
 
 /* Theme Selection */
@@ -340,7 +436,7 @@ body{
 .modal-header {
     border-radius: 3px;
     padding: 2px 16px;
-    background-color: #294859;
+    background-color: var(--modal-header);
     color: white;
 }
 .modal-body {padding: 16px;}
@@ -398,13 +494,21 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
+    border-radius: 5px;
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 10%;
+}
+
+.logoutbutton {
+    opacity: 0.5;
+    background-color: var(--accent-color);
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;  
 }
 
 /* Add a hover effect for buttons */
@@ -452,4 +556,3 @@ span.psw {
         width: 100%;
     }
 }
-

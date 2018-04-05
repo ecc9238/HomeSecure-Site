@@ -1,6 +1,6 @@
 <?php 
 /* Main page with two forms: sign up and log in */
-require 'header.php';
+require 'php/header.php';
 session_start();
 ?>
 
@@ -11,8 +11,8 @@ session_start();
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans" rel="stylesheet">
 	<link id="css" rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="/assets/fontawesome-all.js"></script>
-	<script src="/js/homesecure.js"></script>
+	<script src="assets/fontawesome-all.js"></script>
+	<script src="js/homesecure.js"></script>
     <script>
     	// set Theme
 
@@ -80,19 +80,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if (isset($_POST['login'])) { //user logging in
 
-        require 'login.php';
+        require 'php/login.php';
         
     }
     
     elseif (isset($_POST['register'])) { //user registering
         
-        require 'register.php';
+        require 'php/register.php';
         
     }
 }
 ?>
 
-<body onload="select(1)" class="main">
+<body onload="select(1)" class="main" id="body">
 
 	<div id="topoverlay"></div>
 	<div id="overlay"></div>
@@ -110,19 +110,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	<div class="header">
         <img id="icon" class ="icon" src="img/icon_blue.png" height=50px width=80px alt="">
 	HOMESECURE <span class="about" onclick="about()"><i class="fas fa-question-circle"></i></span>
+
+
    
     <?php 
       if( !isset($_SESSION['logged_in']) )
         {
-          echo "<!-- Button to open the modal login form -->
-            <button onclick= document.getElementById('id01').style.display='block'>Login</button>
-            <!-- Button to open the register modal -->
-            <button onclick= document.getElementById('id02').style.display='block' >Sign Up</button>";
+
         }
       else
         { 
-          echo $_SESSION["username"];
-          echo '<a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>';
+          if( $_SESSION['active'] == 0)
+          {
+            header("location: php/profile.php");
+          }
+          echo '<a href="php/logout.php"><button class="logoutbutton" name="logout"/>Log Out</button></a>';
+          echo "<span class='userheader'><div>" . $_SESSION["username"] . "</div></span>";
         }
       ?>
 
@@ -141,41 +144,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
   			</div>
 		</div>
 	</div>
-    <!-- The Modal -->
-    <div id="id01" class="modal">
-      <span onclick="document.getElementById('id01').style.display='none'" 
-    class="close" title="Close Modal">&times;</span>
-
-      <!-- Modal Content -->
-      <form class="modal-content animate" action="index.php" method="post" autocomplete="off">
-        <div class="imgcontainer">
-          <img src="img/icon_blue.png" height=100px width=150px alt="Avatar" class="icon">
-        </div>
-
-        <div class="container">
-          <label for="uname"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="username" required>
-
-          <label for="psw"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-          <button class="button button-block" name="login" />Log In</button>
-          <p class="forgot"><a href="forgot.php">Forgot Password?</a></p>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        </div>
-      </form>
-    </div>
         <div id="id02" class="modal">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">times;</span>
+      <span onclick="document.getElementById('id02').style.display='none'" class="closeSignup" title="Close Modal">&times;</span>
       <form class="modal-content" action="index.php" method="post" autocomplete="off">
-        <div class="imgcontainer">
-          <img src="img/icon_blue.png" height=100px width=150px alt="Avatar" class="icon">
-        </div>
         <div class="container">
           <h1>Sign Up</h1>
           <p>Please fill in this form to create an account.</p>
@@ -213,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		<div id="op2" onclick="load(2)"><i class="fas fa-video"></i>  Live Cam</div>
 		<div id="op3" onclick="load(3)"><i class="fas fa-file-video"></i>  Recordings</div>
 		<div id="op4" onclick="load(4)"><i class="fas fa-lightbulb"></i>  Lights</div>
-		<div id="op5" onclick="load(5)"><i class="fas fa-lock"></i>  Locks</div>
+		<div id="op5" onclick="load(5)"><i class="fas fa-lock"></i>  Arm/Disarm</div>
 		<div id="op6" onclick="load(6)"><i class="fas fa-cog"></i>  Settings</div>
 
 	</div>
@@ -228,6 +199,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 <?php
   }
+  else
+  {
+?>
+<div class="mainLogin">
+<form class="modal-content animate" action="index.php" method="post" autocomplete="off">
+        <div class="imgcontainer">
+          <img src="img/icon_blue.png" height=100px width=150px alt="Avatar" class="icon">
+        </div>
+
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="username" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+          <button name="login" class="loginbutton">Login</button>
+          <div class="signup" onclick=" document.getElementById('id02').style.display='block'">Sign Up</div>
+          <p class="forgot"><a href="php/forgot.php">Forgot Password?</a></p>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+      </form>
+    </div>
+<script type="text/javascript">
+  document.body.style.backgroundImage = "url('img/night_house.png')";
+  //document.body.style.backgroundSize = "1200px 1200px";
+</script>
+
+
+</div>
+
+<?php
+}
 ?>
 <script>
 // Get the modal

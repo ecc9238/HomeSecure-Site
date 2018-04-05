@@ -19,7 +19,7 @@ else {
 <head>
   <meta charset="UTF-8">
   <title>Welcome <?= $username ?></title>
-  <?php include 'css/css.html'; ?>
+  <?php include '../css/css.html'; ?>
 </head>
 
 <body>
@@ -52,6 +52,16 @@ else {
               on the email link!
               </div>';
           }
+          else {
+            echo '<div class="info">
+            Account is verified, redirecting to home page in 5 seconds</div>';
+
+            echo '<script type="text/javascript">
+                  setTimeout(function(){
+                  window.location="../index.php"
+                  }, 5000);
+                  </script>';
+          }
           
           ?>
           
@@ -59,7 +69,7 @@ else {
           <p><?= $email ?></p>
           
           <a href="logout.php"><button class="button button-block" name="logout"/>Log Out</button></a>
-          <a href="index.php"><button class="button button-block"/>Home</button></a>
+          <a href="../index.php"><button class="button button-block"/>Home</button></a>
 
     </div>
     

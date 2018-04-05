@@ -14,7 +14,19 @@
 		window.addEventListener('message', function(event) { 
 		$("#css").attr("href", event.data);
 			}); 
-		
+
+
+			setInterval(function(){ 
+
+			// Check system status
+			$.ajax({
+  					url: 'php/getStatus.php',
+ 					success: function(data) {
+    				$("#status").html(data);
+  				}
+				});
+			
+			}, 1000);
 
 		});
 		</script>
@@ -29,7 +41,7 @@
 
 	<div>
 
-	<div></div>
+	<div style="text-align: center;"><h1>System is: <span id="status"><span class="loadingStatus"></span></span></h1></div>
 	<div></div>
 	<div></div>
 	<div></div>
