@@ -7,6 +7,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="icon" href="img/favicon.png">
 	<title>HomeSecure</title>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans" rel="stylesheet">
 	<link id="css" rel="stylesheet" type="text/css" href="css/style.css">

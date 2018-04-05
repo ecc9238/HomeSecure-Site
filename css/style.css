@@ -367,6 +367,7 @@ body{
     width: 80px;
     line-height: 40px;
     padding-bottom: 20px;
+    border: 1px solid #eee;
 }
 .theme_select img {
     vertical-align: middle;

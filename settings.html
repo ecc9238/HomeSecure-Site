@@ -14,6 +14,13 @@
 		window.addEventListener('message', function(event) { 
 		$("#css").attr("href", event.data);
 			}); 
+
+		$.ajax({
+  					url: 'php/getEmail.php',
+ 					success: function(data) {
+    				$("#email").html(data);
+  				}
+				});
 		
 
 		});
@@ -33,7 +40,7 @@
 		<div onclick="setTheme('night')" class="theme_select night"><img src="img/icon_white.png" height="50px" width="80px"><span class="caption">Night</span></div>
 		<div onclick="setTheme('leafgreen')" class="theme_select leafgreen"><img src="img/icon_white.png" height="50px" width="80px"><span class="caption">Leaf</span></div>
 	</div>
-	<div>Preferred Email: <span id="email"><?php $_SESSION['email']; ?></span></div>
+	<div>Preferred Email: <span id="email"></span></div>
 	<div></div>
 	<div></div>
 	<div></div>
