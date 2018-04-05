@@ -6,7 +6,7 @@ session_start();
 <html>
 <head>
   <title>Error</title>
-  <?php include 'css/css.html'; ?>
+  <?php include '../css/css.html'; ?>
 </head>
 <body>
 <div class="form">
@@ -20,7 +20,7 @@ session_start();
     endif;
     ?>
     </p>     
-    <a href="index.php"><button class="button button-block"/>Home</button></a>
+    <a href="../index.php"><button class="button button-block"/>Home</button></a>
 </div>
 </body>
 </html>

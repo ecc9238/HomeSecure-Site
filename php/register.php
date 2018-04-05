@@ -20,7 +20,7 @@ $result = $mysqli->query("SELECT * FROM users WHERE email='$email'") or die($mys
 if ( $result->num_rows > 0 ) {
     
     $_SESSION['message'] = 'User with this email already exists!';
-    header("location: error.php");
+    header("location: php/error.php");
     
 }
 else { // Email doesn't already exist in a database, proceed...
@@ -48,17 +48,17 @@ else { // Email doesn't already exist in a database, proceed...
 
         Please click this link to activate your account:
 
-        http://localhost/webserver1/Site/php/verify.php?email='.$email.'&hash='.$hash;  
+        http://localhost/webserver1/homesecure/php/verify.php?email='.$email.'&hash='.$hash;  
 
         mail( $to, $subject, $message_body );
 
-        header("location: profile.php"); 
+        header("location: php/profile.php"); 
 
     }
 
     else {
         $_SESSION['message'] = 'Registration failed!' . $sql . " and " . $mysqli->error;
-        header("location: error.php");
+        header("location: php/error.php");
     }
 
 }
