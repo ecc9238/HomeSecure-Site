@@ -225,7 +225,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       </form>
     </div>
 <script type="text/javascript">
-  document.body.style.backgroundImage = "url('img/night_house.png')";
+  var num = parseInt(Math.random() * 3);
+
+  var bgimg = "";
+
+  switch (num) {
+    case 0:
+    bgimg = "img/night_house.png";
+    break;
+    case 1:
+    bgimg = "img/night_trees.jpg";
+    break;
+    case 2:
+    bgimg = "img/night_mount.jpg";
+    break;
+  }
+  document.body.style.backgroundImage = "url(" + bgimg + ")";
   //document.body.style.backgroundSize = "1200px 1200px";
 </script>
 
