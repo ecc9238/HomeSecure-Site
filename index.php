@@ -134,9 +134,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	<div class="modal" id="modal">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header" style="text-align: center;">
     		<span class="close" onclick="closeModal()">&times;</span>
-    		<h2>HomeSecure: Open-Source Home Security</h2>
+    		<h2 style="text-align: center">HomeSecure<br></h2> <h3>Personalized Home Security and Monitoring</h3>
   			</div>
   			<div class="modal-body">
   				<p><strong>CSC 4990 Spring 2018</strong></p>
@@ -225,7 +225,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       </form>
     </div>
 <script type="text/javascript">
-  var num = parseInt(Math.random() * 3);
+  var num = parseInt(Math.random() * 6);
 
   var bgimg = "";
 
@@ -238,6 +238,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     break;
     case 2:
     bgimg = "img/night_mount.jpg";
+    break;
+    case 3:
+    bgimg ="img/night_cat.jpg"
+    break;
+    case 4:
+    bgimg ="img/moon.jpg"
+    break;
+    case 5:
+    bgimg ="img/star.jpg"
     break;
   }
   document.body.style.backgroundImage = "url(" + bgimg + ")";

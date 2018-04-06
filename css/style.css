@@ -360,7 +360,7 @@ body{
   }
 }
 
-/* Theme Selection */
+/* Settings and Theme Selection */
 .theme_select {
     cursor: pointer;
     display: inline-block !important;
@@ -390,6 +390,10 @@ body{
 .caption {
     text-align: center;
     display: block;
+}
+
+.email {
+    cursor: pointer;
 }
 
 /* Modal */
@@ -527,7 +531,7 @@ button:hover {
 /* Center the avatar image inside this container */
 .imgcontainer {
     text-align: center;
-    margin: 24px 0 12px 0;
+    margin: 24px 24px 12px 0;
 }
 
 /* Avatar image */
